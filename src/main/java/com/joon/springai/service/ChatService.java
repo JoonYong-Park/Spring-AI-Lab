@@ -1,4 +1,4 @@
-package com.joon.springai;
+package com.joon.springai.service;
 
 import com.joon.springai.dto.ChatRequest;
 import com.joon.springai.dto.ChatResponse;
@@ -10,13 +10,12 @@ import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
-@Slf4j
-public class AiService {
+public class ChatService {
 
   private final OpenAiChatModel openAiChatModel;
-
 
   public ChatResponse chat(ChatRequest chatRequest) {
     PromptTemplate promptTemplate = new PromptTemplate(
@@ -26,6 +25,7 @@ public class AiService {
         사용자: {query}
         """
     );
+
     Prompt prompt = promptTemplate.create(Map.of("query", chatRequest.query()));
 
     String aiResponse = openAiChatModel.call(prompt).getResult().getOutput().getContent();

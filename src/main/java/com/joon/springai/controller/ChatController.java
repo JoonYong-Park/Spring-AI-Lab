@@ -1,5 +1,6 @@
-package com.joon.springai;
+package com.joon.springai.controller;
 
+import com.joon.springai.service.ChatService;
 import com.joon.springai.dto.ChatRequest;
 import com.joon.springai.dto.ChatResponse;
 import javax.validation.Valid;
@@ -12,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/ai")
 @RequiredArgsConstructor
-public class AiController {
+@RequestMapping("/ai")
+public class ChatController {
 
-  private final AiService aiService;
+  private final ChatService aiService;
 
   @GetMapping
   public String status() {

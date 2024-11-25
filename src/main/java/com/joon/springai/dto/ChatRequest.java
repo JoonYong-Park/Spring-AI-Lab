@@ -1,9 +1,9 @@
 package com.joon.springai.dto;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 
 public record ChatRequest(
-    @NotNull String query
+    @NotBlank String query
 ) {
 
 }
